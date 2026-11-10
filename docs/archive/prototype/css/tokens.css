@@ -1,0 +1,98 @@
+/* ===========================================================
+   闸 · TimeGate — Design tokens
+   用色方式对齐 iOS 系统语义色（UIKit Semantic Colors）
+   原则：90% 中性 + 1 个 tint，tint 面积 <5%
+   =========================================================== */
+
+:root {
+  --font: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Segoe UI",
+          "PingFang SC", "HarmonyOS Sans SC", "Microsoft YaHei", system-ui, sans-serif;
+
+  /* 圆角阶梯 —— iOS 分组卡片是 10~12，不是 24 */
+  --r-xs: 8px;
+  --r-sm: 10px;
+  --r-md: 12px;
+  --r-lg: 16px;
+  --r-xl: 22px;
+  --r-full: 999px;
+
+  --ease-out:    cubic-bezier(.22,.78,.24,1);
+  --ease-in-out: cubic-bezier(.65,0,.35,1);
+  --ease-spring: cubic-bezier(.34,1.4,.64,1);
+
+  --d1: .12s;
+  --d2: .2s;
+  --d3: .38s;
+  --d4: .6s;
+
+  /* 玻璃 */
+  --glass-blur: 30px;
+  --glass-mix: 74%;
+  --bar-h: 64px;
+}
+
+/* ---------- 深色 ---------- */
+html[data-theme="dark"] {
+  --bg:        #000000;
+  --surface:   #1C1C1E;
+  --surface-2: #2C2C2E;
+  --surface-3: #3A3A3C;
+
+  --line:        rgba(84,84,88,.62);
+  --line-strong: rgba(84,84,88,.95);
+
+  --text-1: #FFFFFF;
+  --text-2: rgba(235,235,245,.60);
+  --text-3: rgba(235,235,245,.34);
+
+  --tint:      #4E5CEC;
+  --tint-on:   #5B6CFF;
+  --tint-soft: rgba(91,108,255,.24);
+  --tint-ink:  #FFFFFF;
+
+  --danger: #FF453A;
+  --warn:   #FF9F0A;
+
+  --ring-track: rgba(120,120,128,.32);
+
+  --btn-solid:    #FFFFFF;
+  --btn-solid-ink:#000000;
+  --btn-solid-hi: rgba(255,255,255,.55);
+
+  --tab-idle: rgba(235,235,245,.50);
+
+  color-scheme: dark;
+}
+
+/* ---------- 浅色 ---------- */
+html[data-theme="light"] {
+  --bg:        #F2F2F7;
+  --surface:   #FFFFFF;
+  --surface-2: #E9E9EE;
+  --surface-3: #D6D6DC;
+
+  --line:        rgba(60,60,67,.26);
+  --line-strong: rgba(60,60,67,.42);
+
+  --text-1: #000000;
+  --text-2: rgba(60,60,67,.60);
+  --text-3: rgba(60,60,67,.34);
+
+  --tint:      #4655DB;
+  --tint-on:   #3541C9;
+  --tint-soft: rgba(70,85,219,.14);
+  --tint-ink:  #FFFFFF;
+
+  --danger: #FF3B30;
+  --warn:   #C77700;
+
+  --ring-track: rgba(120,120,128,.20);
+
+  --btn-solid:    #000000;
+  --btn-solid-ink:#FFFFFF;
+  --btn-solid-hi: rgba(255,255,255,.20);
+
+  --tab-idle: rgba(60,60,67,.52);
+
+  color-scheme: light;
+}

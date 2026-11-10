@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+      关键约束（SOP §4 S04 / PROJECT.md，一条都不能破）：
+      1. 不声明 INTERNET（零联网能力）。
+      2. 只有一个 launcher Activity（MainActivity，exported=true）。
+      3. allowBackup=false。
+      4. 无障碍服务、前台服务、额外权限属 S07/S08/S09，现在一律不建。
+    -->
+
+    <application
+        android:name=".TimeGateApp"
+        android:allowBackup="false"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.TimeGate">
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.TimeGate">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+
+</manifest>

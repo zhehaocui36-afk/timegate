@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- S04 临时启动图标占位：主色 #5B6CFF 背景 + 白色竖线（闸门意象）。
+     正式自适应图标由 S13 补齐（mipmap + anydpi-v26）。 -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <path
+        android:fillColor="#5B6CFF"
+        android:pathData="M2,2h20v20H2z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M10,4h4v16h-4z" />
+</vector>

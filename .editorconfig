@@ -1,0 +1,29 @@
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+indent_style = space
+indent_size = 4
+trim_trailing_whitespace = true
+
+# Kotlin / Gradle Kotlin DSL
+[*.{kt,kts}]
+indent_size = 4
+
+# Android 资源与 Gradle Groovy DSL
+[*.{xml,gradle}]
+indent_size = 4
+
+# Web 原型（demo/ 单文件内嵌 CSS/JS 按 2 空格阅读）
+[*.{html,css,js}]
+indent_size = 2
+
+# 数据 / 配置
+[*.{json,yml,yaml}]
+indent_size = 2
+
+# Markdown 保留行尾空格（排版需要）
+[*.md]
+trim_trailing_whitespace = false

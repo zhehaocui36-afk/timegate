@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="zh-CN" data-theme="dark">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="theme-color" content="#000000" />
+<title>闸 · TimeGate</title>
+<link rel="stylesheet" href="css/tokens.css" />
+<link rel="stylesheet" href="css/app.css" />
+</head>
+<body>
+<div id="app">
+
+  <main id="screens">
+
+    <section class="screen is-active" data-screen="today">
+      <header class="hd">
+        <div>
+          <h1 class="hd__title">晚上好</h1>
+          <p class="hd__sub" id="todayDate">—</p>
+        </div>
+        <button class="icon-btn" id="themeBtn" aria-label="切换主题">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M20 14.5A8.2 8.2 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5Z"/>
+          </svg>
+        </button>
+      </header>
+
+      <div class="hero">
+        <div class="ring-wrap">
+          <svg class="ring" viewBox="0 0 200 200" aria-hidden="true">
+            <circle class="ring__track" cx="100" cy="100" r="86"/>
+            <g id="donut"></g>
+          </svg>
+          <div class="ring__center">
+            <div class="ring__num" id="ringNum">0m</div>
+            <div class="ring__cap">今日已用</div>
+          </div>
+        </div>
+        <div class="legend" id="legend"></div>
+        <p class="hero__delta" id="heroDelta">—</p>
+      </div>
+
+      <div class="card focus-card" id="focusCard">
+        <div class="focus-card__l">
+          <p class="t-3">今天最想先放下</p>
+          <p class="focus-card__name" id="topAppName">—</p>
+          <p class="focus-card__meta" id="topAppMeta">—</p>
+        </div>
+        <button class="btn btn--glass btn--sm" id="topAppOpen">现在打开</button>
+      </div>
+
+      <button class="btn btn--primary btn--block" id="focusStart">
+        <span>开始 25 分钟专注</span>
+      </button>
+      <button class="btn btn--ghost btn--block" id="pickApp">挑一个应用，试试闸门</button>
+    </section>
+
+    <section class="screen" data-screen="apps">
+      <header class="hd hd--tight">
+        <div>
+          <h1 class="hd__title hd__title--sm">受管应用</h1>
+          <p class="hd__sub" id="appsCount">—</p>
+        </div>
+        <button class="icon-btn" id="addApp" aria-label="添加应用">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+        </button>
+      </header>
+      <div id="appList" class="list"></div>
+      <p class="hint">点任意一行，进入三问闸门。长按名字可以改名。</p>
+    </section>
+
+    <section class="screen" data-screen="stats">
+      <header class="hd hd--tight">
+        <div>
+          <h1 class="hd__title hd__title--sm">统计</h1>
+          <p class="hd__sub">最近 7 天</p>
+        </div>
+      </header>
+
+      <div class="card chart-card">
+        <div class="chart" id="chart"></div>
+        <div class="chart__axis" id="chartAxis"></div>
+      </div>
+
+      <h2 class="sect">按应用</h2>
+      <div class="card" id="rank"></div>
+
+      <h2 class="sect">闸门漏斗</h2>
+      <div class="card funnel" id="funnel"></div>
+    </section>
+
+    <section class="screen" data-screen="me">
+      <header class="hd hd--tight">
+        <div>
+          <h1 class="hd__title hd__title--sm">我的</h1>
+          <p class="hd__sub">数据只存在这台设备上</p>
+        </div>
+      </header>
+
+      <h2 class="sect">外观</h2>
+      <div class="card">
+        <div class="row">
+          <span>主题</span>
+          <div class="seg" id="themeSeg">
+            <button data-v="system">系统</button>
+            <button data-v="light">浅色</button>
+            <button data-v="dark">深色</button>
+          </div>
+        </div>
+        <div class="row row--stack">
+          <div class="row__top"><span>玻璃通透度</span><span class="num t-3" id="glassVal">60</span></div>
+          <input class="range" id="glassRange" type="range" min="0" max="100" value="60" />
+          <p class="hint hint--tight">调低＝更接近实色磨砂，调高＝更通透。深色下会自动压低。</p>
+        </div>
+        <div class="row">
+          <span>震动反馈</span>
+          <label class="switch"><input type="checkbox" id="haptic" checked /><i></i></label>
+        </div>
+      </div>
+
+      <h2 class="sect">演示</h2>
+      <div class="card">
+        <div class="row">
+          <span>时间加速</span>
+          <div class="seg" id="speedSeg">
+            <button data-v="1">1×</button>
+            <button data-v="10">10×</button>
+            <button data-v="60">60×</button>
+          </div>
+        </div>
+        <div class="row">
+          <span>重新生成演示数据</span>
+          <button class="btn btn--glass btn--xs" id="reseed">生成</button>
+        </div>
+        <div class="row">
+          <span>清空全部数据</span>
+          <button class="btn btn--danger btn--xs" id="wipe">清空</button>
+        </div>
+      </div>
+
+      <p class="foot">闸 · TimeGate 0.1.0<br/>复刻自「时间锁」，界面重做</p>
+    </section>
+
+  </main>
+
+  <nav class="tabbar" id="tabbar" role="tablist">
+    <div class="tabbar__capsule">
+    <div class="tabbar__ind" id="ind"></div>
+    <button class="tab is-active" data-tab="today" role="tab" aria-selected="true">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8.4"/><circle cx="12" cy="12" r="2.3" class="fill"/></svg>
+      <span class="tab__label">今日</span>
+    </button>
+    <button class="tab" data-tab="apps" role="tab" aria-selected="false">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="4" width="6.6" height="6.6" rx="2.1"/><rect x="13.4" y="4" width="6.6" height="6.6" rx="2.1"/><rect x="4" y="13.4" width="6.6" height="6.6" rx="2.1"/><rect x="13.4" y="13.4" width="6.6" height="6.6" rx="2.1"/></svg>
+      <span class="tab__label">应用</span>
+    </button>
+    <button class="tab" data-tab="stats" role="tab" aria-selected="false">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 19v-5.6M12 19V7.6M17.5 19v-9.2"/></svg>
+      <span class="tab__label">统计</span>
+    </button>
+    <button class="tab" data-tab="me" role="tab" aria-selected="false">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="8.4" r="3.6"/><path d="M4.9 19.4c1.3-3.3 3.9-4.9 7.1-4.9s5.8 1.6 7.1 4.9"/></svg>
+      <span class="tab__label">我的</span>
+    </button>
+    </div>
+  </nav>
+
+</div>
+
+<div class="ob" id="onboard" hidden></div>
+<div class="overlay" id="gate" hidden></div>
+<div class="overlay" id="focus" hidden></div>
+
+<script src="js/store.js"></script>
+<script src="js/gate.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>

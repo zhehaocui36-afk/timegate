@@ -1,0 +1,41 @@
+[versions]
+# Android Gradle Plugin（最新稳定，2026-10）
+agp = "9.5.0"
+# Kotlin 版本：AGP 9 内置 Kotlin，此处版本只喂给 Compose Compiler 插件
+# （org.jetbrains.kotlin.plugin.compose 版本必须与最终 Kotlin 编译器版本一致）
+kotlin = "2.4.21"
+# Compose BOM（最新稳定，2026-09）
+composeBom = "2026.09.00"
+activityCompose = "1.13.0"
+coreKtx = "1.18.0"
+lifecycle = "2.11.0"
+junit = "4.13.2"
+# Room（S06 数据层；androidx.room 最新稳定 2026-09-09，勿用 androidx.room3 实验线）
+room = "2.8.5"
+# KSP（匹配 Kotlin 2.4.21；备选降级 2.3.10 = kotlinlang 官方示例版本）
+ksp = "2.3.13"
+
+[libraries]
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycle" }
+androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activityCompose" }
+# Compose 库：版本由 BOM 统一管，这里不写具体版本
+androidx-compose-bom = { group = "androidx.compose", name = "compose-bom", version.ref = "composeBom" }
+androidx-compose-ui = { group = "androidx.compose.ui", name = "ui" }
+androidx-compose-ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
+androidx-compose-ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
+androidx-compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
+androidx-compose-material3 = { group = "androidx.compose.material3", name = "material3" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+# Room（S06 数据层五表）
+androidx-room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
+androidx-room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
+androidx-room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+# 显式 foundation/animation（S05 变更请求1：原本靠 material3 传递，显式化避免 BOM 升级 unresolved）
+androidx-compose-foundation = { group = "androidx.compose.foundation", name = "foundation" }
+androidx-compose-animation = { group = "androidx.compose.animation", name = "animation" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }

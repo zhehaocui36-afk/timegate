@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- S04 主题占位：框架自带 Material 主题，无 AppCompat 依赖。
+         正式的设计系统（Color/Type/Shape/深色模式）由 S05 在 ui/theme 落地。 -->
+    <style name="Theme.TimeGate" parent="android:Theme.Material.Light.NoActionBar" />
+</resources>
